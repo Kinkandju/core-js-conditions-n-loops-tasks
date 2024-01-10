@@ -42,12 +42,15 @@ function isPositive(number) {
 
 function getMaxNumber(a, b, c) {
   let max = a;
+
   if (b > max) {
     max = b;
   }
+
   if (c > max) {
     max = c;
   }
+
   return max;
 }
 
@@ -102,24 +105,29 @@ function isIsoscelesTriangle(a, b, c) {
   if (a <= 0 || b <= 0 || c <= 0) {
     return false;
   }
+
   if (a === b && b === c) {
     return true;
   }
+
   if (a === b) {
     if (c === a + 1 || c === a - 1) {
       return true;
     }
   }
+
   if (b === c) {
     if (a === b + 1 || a === b - 1) {
       return true;
     }
   }
+
   if (c === a) {
     if (b === c + 1 || b === c - 1) {
       return true;
     }
   }
+
   return false;
 }
 
@@ -177,36 +185,47 @@ function convertNumberToString(numberStr) {
       case '0':
         result += 'zero';
         break;
+
       case '1':
         result += 'one';
         break;
+
       case '2':
         result += 'two';
         break;
+
       case '3':
         result += 'three';
         break;
+
       case '4':
         result += 'four';
         break;
+
       case '5':
         result += 'five';
         break;
+
       case '6':
         result += 'six';
         break;
+
       case '7':
         result += 'seven';
         break;
+
       case '8':
         result += 'eight';
         break;
+
       case '9':
         result += 'nine';
         break;
+
       case '-':
         result += 'minus';
         break;
+
       default:
         result += 'point';
         break;
