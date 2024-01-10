@@ -156,6 +156,7 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
+
 function convertNumberToString(numberStr) {
   let result = '';
 
@@ -221,8 +222,15 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+
+function isPalindrome(str) {
+  let reversedStr = '';
+
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reversedStr += str[i];
+  }
+
+  return str === reversedStr;
 }
 
 /**
