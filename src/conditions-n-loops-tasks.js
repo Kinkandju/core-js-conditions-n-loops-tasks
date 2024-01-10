@@ -20,9 +20,10 @@
  *  10 => true
  *  0  => true
  *  -5 => false
- */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+*/
+
+function isPositive(number) {
+  return number >= 0 ? 1 : 0;
 }
 
 /**
