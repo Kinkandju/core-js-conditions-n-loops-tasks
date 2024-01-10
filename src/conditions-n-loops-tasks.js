@@ -374,7 +374,7 @@ function rotateMatrix(matrix) {
     const end = n - 1 - layer;
 
     for (let i = start; i < end; i += 1) {
-      const temp = newMatrix[start][i];
+      const newNumber = newMatrix[start][i];
 
       newMatrix[start][i] = newMatrix[end - i + start][start];
 
@@ -382,7 +382,7 @@ function rotateMatrix(matrix) {
 
       newMatrix[end][end - i + start] = newMatrix[i][end];
 
-      newMatrix[i][end] = temp;
+      newMatrix[i][end] = newNumber;
     }
   }
 
@@ -445,8 +445,46 @@ function shuffleChar(/* str, iterations */) {
  * @param {number} number The source number
  * @returns {number} The nearest larger number, or original number if none exists.
  */
-function getNearestBigger(/* number */) {
-  throw new Error('Not implemented');
+
+function getNearestBigger(number) {
+  const newArr = [];
+  let newNumber = number;
+
+  function findNextDigit(digitsArr, value) {
+    for (let i = 0; i < digitsArr.length; i += 1) {
+      if (value < digitsArr[i]) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  while (newNumber) {
+    let remains = newNumber % 10;
+    newNumber = Math.floor(newNumber / 10);
+
+    const nextIndex = findNextDigit(newArr, remains);
+
+    if (nextIndex !== -1) {
+      [remains, newArr[nextIndex]] = [newArr[nextIndex], remains];
+
+      let storage = 0;
+      let multiplier = 1;
+
+      for (let i = newArr.length - 1; i >= 0; i -= 1) {
+        storage += newArr[i] * multiplier;
+        multiplier *= 10;
+      }
+
+      return newNumber * (multiplier * 10) + remains * multiplier + storage;
+    }
+
+    newArr.push(remains);
+    newArr.sort((a, b) => a - b);
+  }
+
+  return newNumber;
 }
 
 module.exports = {
